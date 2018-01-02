@@ -38,9 +38,13 @@ export class WeatherDashboardComponent implements OnInit {
       );
   }
 
+  /**
+   * Calls the getWeather function upon the user submission of a zipcode
+   */
   handleZip(): void {
     console.log('HandleZip is working');
     console.log('The current zipcode is: ' + this.currentZipcode);
+    this.getWeather(this.currentZipcode);
   }
 
 }
