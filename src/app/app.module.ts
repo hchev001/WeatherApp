@@ -3,16 +3,29 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { WeatherDashboardComponent } from './weather-dashboard/weather-dashboard.component';
+import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { WeatherFormComponent } from './weather-form/weather-form.component';
+import { WeatherGlyphComponent } from './weather-glyph/weather-glyph.component';
+import { WeatherService } from './weather.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WeatherDashboardComponent,
+    CurrentWeatherComponent,
+    WeatherFormComponent,
+    WeatherGlyphComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    WeatherService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
