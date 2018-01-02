@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,8 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./weather-form.component.css']
 })
 export class WeatherFormComponent implements OnInit {
-
-  private zip;
+  @Output() zipsubmit: EventEmitter<any>;
 
   // our form
   private form = new FormGroup({
@@ -19,14 +18,18 @@ export class WeatherFormComponent implements OnInit {
     return this.form.get('zipcode');
   }
 
-  constructor() { }
+  constructor() {
+    this.zipsubmit = new EventEmitter();
+  }
 
   ngOnInit() {
   }
 
   public OnFormSubmit() {
     if (this.form.valid) {
-      console.log(this.zipcode.value);
+      this.zipsubmit.emit('test, thisis working');
+      console.log('Should have emitted event by now');
     }
+
   }
 }

@@ -33,4 +33,8 @@ export class WeatherDashboardComponent implements OnInit {
       );
   }
 
+  handleZip(value): void {
+    console.log(value);
+  }
+
 }
