@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ZipServiceService } from '../zip-service.service';
 
 @Component({
   selector: 'app-weather-form',
@@ -18,7 +19,9 @@ export class WeatherFormComponent implements OnInit {
     return this.form.get('zipcode');
   }
 
-  constructor() {
+  constructor(
+    private ZipSrvc: ZipServiceService
+  ) {
     this.zipsubmit = new EventEmitter();
   }
 
@@ -27,8 +30,8 @@ export class WeatherFormComponent implements OnInit {
 
   public OnFormSubmit() {
     if (this.form.valid) {
-      this.zipsubmit.emit('test, thisis working');
-      console.log('Should have emitted event by now');
+      this.ZipSrvc.submitZipcode(this.zipcode.value);
+      this.zipsubmit.emit();
     }
 
   }

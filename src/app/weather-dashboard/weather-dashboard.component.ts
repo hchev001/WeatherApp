@@ -2,20 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { Weather } from '../weather';
 import { error } from 'selenium-webdriver';
+import { ZipServiceService } from '../zip-service.service';
 
 @Component({
   selector: 'app-weather-dashboard',
   templateUrl: './weather-dashboard.component.html',
-  styleUrls: ['./weather-dashboard.component.css']
+  styleUrls: ['./weather-dashboard.component.css'],
+  providers: [ZipServiceService]
 })
 export class WeatherDashboardComponent implements OnInit {
 
+  currentZipcode: string;
   currentWeather: Weather;
   constructor(
-    private OpenWeather: WeatherService
-  ) { }
+    private OpenWeather: WeatherService,
+    private ZipSrvc: ZipServiceService
+  ) {}
 
   ngOnInit() {
+    this.ZipSrvc.userZipcode$.subscribe(zipcode => this.currentZipcode = zipcode);
   }
 
   /**
@@ -33,8 +38,9 @@ export class WeatherDashboardComponent implements OnInit {
       );
   }
 
-  handleZip(value): void {
-    console.log(value);
+  handleZip(): void {
+    console.log('HandleZip is working');
+    console.log('The current zipcode is: ' + this.currentZipcode);
   }
 
 }
