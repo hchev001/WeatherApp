@@ -9,6 +9,7 @@ import { WeatherFormComponent } from './weather-form/weather-form.component';
 import { WeatherGlyphComponent } from './weather-glyph/weather-glyph.component';
 import { WeatherService } from './weather.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     WeatherService,

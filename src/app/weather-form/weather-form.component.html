@@ -1,6 +1,12 @@
 <div>
-  <form>
-    <span><input type="text" placeholder="zipcode"></span>
-    <button>Submit</button>
+  <form 
+    [formGroup]="form"
+    (ngSubmit)="OnFormSubmit()">
+    <input 
+      type="text"
+      placeholder="zipcode"
+      formControlName="zipcode">
+    <div *ngIf="zipcode.invalid && zipcode.touched"> Zipcode must be minimum 5 characters long</div>
+    <button type="submit">Submit</button>
   </form>
 </div>
