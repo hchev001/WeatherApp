@@ -1,3 +1,4 @@
+import { GeoEncodingService } from './shared/geo-encoding.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     WeatherService,
+    GeoEncodingService
   ],
   bootstrap: [AppComponent]
 })
