@@ -6,21 +6,25 @@ import { Weather } from './weather';
 @Injectable()
 export class WeatherService {
 
-  weatherApiUrl = 'api.openweathermap.org/';
+  weatherApiUrl = 'https://api.darksky.net/forecast/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   /**
-   * Uses OpenWeather API end point to retrieve the weather based on the user's zip code
+   * Uses Darksky Weather API to retrieve an areas weather based on latitude and logitude
    * @param zipcode a zipcode in the United States
    */
-  GetWeather(zipcode: number): Observable<Weather> {
-    const countryCode = 'us';
-    const apiKey = '&APPID=11ed78ef6542309b2d90eecdc31c4dac';
-    const imperialUnits = '&units=imperial';
-    const endpoint = this.weatherApiUrl + 'data/2.5/weather?zip=' + zipcode + ',' + countryCode + apiKey + imperialUnits;
+  GetWeather(zipcode: number): Observable<any> {
+    const latitude = '';
+    const longitude = '';
+    const endpoint = this.weatherApiUrl + this.ApiKey() + '/' + latitude + ',' + longitude;
     return this.http.get<Weather>(endpoint);
+  }
+
+  // returns the DarkSky API key
+  private ApiKey(): string {
+    return 'a4f561ec02ea2ccf6b2c65e99321705d';
   }
 }
