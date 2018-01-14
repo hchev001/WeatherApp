@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     WeatherService,
+    GeoEncodingService,
     GeoEncodingService
   ],
   bootstrap: [AppComponent]
