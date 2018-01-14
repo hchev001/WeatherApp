@@ -1,3 +1,4 @@
+import { GeoEncoding, ResultsEntity, Geometry } from './../GeoEncoding';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { Weather } from '../weather';
@@ -12,7 +13,7 @@ import { ZipServiceService } from '../zip-service.service';
 })
 export class WeatherDashboardComponent implements OnInit {
 
-  currentZipcode: string;
+  userEncoding: GeoEncoding;
   currentWeather: Weather;
   constructor(
     private OpenWeather: WeatherService,
@@ -20,7 +21,7 @@ export class WeatherDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ZipSrvc.userZipcode$.subscribe(zipcode => this.currentZipcode = zipcode);
+    this.ZipSrvc.userZipcode$.subscribe(encoding => this.userEncoding = encoding);
   }
 
   /**
@@ -42,9 +43,8 @@ export class WeatherDashboardComponent implements OnInit {
    * Calls the getWeather function upon the user submission of a zipcode
    */
   handleZip(): void {
-    console.log('HandleZip is working');
-    console.log('The current zipcode is: ' + this.currentZipcode);
-    this.getWeather(this.currentZipcode);
+    console.log('The current cardinal coordinates are ' + this.userEncoding.results[0].geometry.location.lat + ' ' 
+    + this.userEncoding.results[0].geometry.location.lng);
   }
 
 }

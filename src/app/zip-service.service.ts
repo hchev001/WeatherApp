@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { GeoEncoding } from './GeoEncoding';
 
 @Injectable()
 export class ZipServiceService {
 
   // Observable string sources
-  private userZipcode = new Subject<string>();
+  private userGeoEncoding = new Subject<GeoEncoding>();
 
   // Observable string streams
-  userZipcode$ = this.userZipcode.asObservable();
+  userZipcode$ = this.userGeoEncoding.asObservable();
 
   // Service message commands
-  submitZipcode(zip: string) {
-    this.userZipcode.next(zip);
+  submitEncoding( encoding: GeoEncoding) {
+    this.userGeoEncoding.next(encoding);
   }
   constructor() { }
 

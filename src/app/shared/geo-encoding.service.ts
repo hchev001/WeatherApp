@@ -24,8 +24,8 @@ export class GeoEncodingService {
    */
   public ZipCodeLocation(zip: string): Observable<GeoEncoding> {
     const baseUrl = this.GeoBaseUrl();
-    const key = this.GeoEncodingKey();
-    const endpoint = baseUrl + 'address=' + zip + '&key=' + this.GeoBaseUrl();
+    const keyValue = this.GeoEncodingKey();
+    const endpoint = baseUrl + 'address=' + zip + '&key=' + keyValue;
     return this.http.get<GeoEncoding>(endpoint);
   }
 
@@ -33,6 +33,6 @@ export class GeoEncodingService {
    * Returns the base url for Google's GeoEncoding service
    */
   public GeoBaseUrl(): string {
-    return 'http://maps.googleapis.com/maps/api/geocode/json?';
+    return 'https://maps.googleapis.com/maps/api/geocode/json?';
   }
 }

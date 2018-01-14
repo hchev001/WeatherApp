@@ -1,3 +1,4 @@
+import { GeoEncodingService } from './../shared/geo-encoding.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ZipServiceService } from '../zip-service.service';
@@ -20,7 +21,8 @@ export class WeatherFormComponent implements OnInit {
   }
 
   constructor(
-    private ZipSrvc: ZipServiceService
+    private ZipSrvc: ZipServiceService,
+    private GeoEncode: GeoEncodingService
   ) {
     this.zipsubmit = new EventEmitter();
   }
@@ -28,11 +30,23 @@ export class WeatherFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Uses the ipServiceService to pass the results of the GeoEncoding
+   * asynch call to the dashboard component
+   */
   public OnFormSubmit() {
     if (this.form.valid) {
-      this.ZipSrvc.submitZipcode(this.zipcode.value);
-      this.zipsubmit.emit();
+      this.GeoEncode.ZipCodeLocation(this.zipcode.value)
+        .subscribe(
+          payload => {
+            this.ZipSrvc.submitEncoding(payload);
+            console.log(payload);
+            this.zipsubmit.emit();
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
-
   }
 }
