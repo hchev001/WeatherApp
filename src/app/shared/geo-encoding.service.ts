@@ -1,3 +1,5 @@
+import { GeoEncoding } from './../GeoEncoding';
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -16,15 +18,15 @@ export class GeoEncodingService {
   }
 
   /**
-   * Uses Google's GeoEncoding service to retrieve cardinal coordinates based 
+   * Uses Google's GeoEncoding service to retrieve cardinal coordinates based
    * on ZipCode
    * @param zip Zipcode used for retrieving geolocation coordinates
    */
-  public ZipCodeLocation(zip: string) {
+  public ZipCodeLocation(zip: string): Observable<GeoEncoding> {
     const baseUrl = this.GeoBaseUrl();
     const key = this.GeoEncodingKey();
     const endpoint = baseUrl + 'address=' + zip + '&key=' + this.GeoBaseUrl();
-    return this.http.get(endpoint);
+    return this.http.get<GeoEncoding>(endpoint);
   }
 
   /**
