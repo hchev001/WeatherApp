@@ -16,9 +16,9 @@ export class WeatherService {
    * Uses Darksky Weather API to retrieve an areas weather based on latitude and logitude
    * @param zipcode a zipcode in the United States
    */
-  GetWeather(zipcode: number): Observable<any> {
-    const latitude = '';
-    const longitude = '';
+  GetWeatherFromCardinals(lat: number, lng: number): Observable<any> {
+    const latitude = lat;
+    const longitude = lng;
     const endpoint = this.weatherApiUrl + this.ApiKey() + '/' + latitude + ',' + longitude;
     return this.http.get<Weather>(endpoint);
   }
