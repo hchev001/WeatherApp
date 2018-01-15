@@ -1,4 +1,4 @@
-<div>
+<div class="weatherForm">
   <form 
     [formGroup]="form"
     (ngSubmit)="OnFormSubmit()">
@@ -7,6 +7,8 @@
       placeholder="zipcode"
       formControlName="zipcode">
     <div *ngIf="zipcode.invalid && zipcode.touched"> Zipcode must be minimum 5 characters long</div>
-    <button type="submit">Submit</button>
+    <div class="buttonContainer">
+      <button class="button" type="submit">Submit</button>
+    </div>
   </form>
 </div>

@@ -1,0 +1,9 @@
+.TodaysWeather {
+  border-style: solid;
+  border-width: 0px;
+}
+
+h2, p {
+  border-style: solid;
+  border-width: 0px;
+}

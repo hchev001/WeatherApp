@@ -1,6 +1,10 @@
-<h1>MyWeather</h1>
-<h6>A FreeCodeCamp Project</h6>
-<current-weather 
-  [weather]='currentWeather' ></current-weather>
-<app-weather-form (zipsubmit)="handleZip()"></app-weather-form>
-<app-weather-glyph></app-weather-glyph>
+<div class="wrapper">
+  <div class="item">
+    <h1 class="head">MyWeather</h1>
+    <h6 class="head">A FreeCodeCamp Project</h6>
+  </div>
+  <current-weather 
+    [weather]='currentWeather' class="item"></current-weather>
+  <app-weather-form (zipsubmit)="handleZip()" class="item"></app-weather-form>
+  <app-weather-glyph class="item"></app-weather-glyph>
+</div>
