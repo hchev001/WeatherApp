@@ -16,7 +16,7 @@ export class WeatherDashboardComponent implements OnInit {
   userEncoding: GeoEncoding;
   currentWeather: Weather;
   constructor(
-    private OpenWeather: WeatherService,
+    private DarkSky: WeatherService,
     private ZipSrvc: ZipServiceService
   ) {}
 
@@ -26,10 +26,11 @@ export class WeatherDashboardComponent implements OnInit {
 
   /**
    * Subscribes to the http observable to receive a Weather object
-   * @param zipcode the zipcode to lookup weather of
+   * @param lat Latitude coordinate
+   * @param lng Longitude coordinate
    */
-  getWeather(zipcode: any): void {
-    this.OpenWeather.GetWeather(zipcode)
+  getWeather(lat: number, lng: number ): void {
+    this.DarkSky.GetWeatherFromCardinals(lat, lng)
       .subscribe(
         weather => {
           this.currentWeather = weather;
@@ -45,6 +46,11 @@ export class WeatherDashboardComponent implements OnInit {
   handleZip(): void {
     console.log('The current cardinal coordinates are ' + this.userEncoding.results[0].geometry.location.lat + ' ' 
     + this.userEncoding.results[0].geometry.location.lng);
+    const latitude = this.userEncoding.results[0].geometry.location.lat;
+    const longitude = this.userEncoding.results[0].geometry.location.lng;
+    this.getWeather(latitude, longitude);
+
+
   }
 
 }
