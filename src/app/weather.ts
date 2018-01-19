@@ -122,6 +122,6 @@ export interface AlertsEntity {
 }
 export interface Flags {
   sources?: (string)[] | null;
-  isd-stations?: (string)[] | null;
+  isdstations?: (string)[] | null;
   units: string;
 }
