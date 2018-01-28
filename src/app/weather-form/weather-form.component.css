@@ -20,10 +20,6 @@
 
 .buttonContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-}
-.button {
-  width: 50%;
-  max-width: 100%;
 }
