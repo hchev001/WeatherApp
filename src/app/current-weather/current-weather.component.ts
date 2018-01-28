@@ -12,7 +12,7 @@ export class CurrentWeatherComponent implements OnChanges {
 
   currentTemperature = 70;
   precipitation = 80;
-  feelslike_f = '';
+  feelslike_f = '32';
 
   constructor() { }
 
