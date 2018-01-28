@@ -16,8 +16,9 @@ export class CurrentWeatherComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.weather && this.weather.main) {
-      this.currentTemperature = this.weather.main.temp;
+    if (this.weather && this.weather.current_observation) {
+      this.currentTemperature = this.weather.current_observation
+                                  .temp_f;
     }
   }
 

@@ -1,34 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.parent {
-  display: flex;
-  height: auto;
-  background-color: aqua;
-}
-
-.child {
-  width: auto;
-  height: auto;
-  margin: auto;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: 200px;
-  grid-template-areas: 
-    ". . . ."
-    ". b b ."
-    ". b b ."
-    ". . . .";
-}
-
-.dshboard {
-  grid-area: b;
-  justify-self: center;
-  align-self: center;
-}
-
 
 
 
