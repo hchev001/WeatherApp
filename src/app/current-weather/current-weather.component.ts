@@ -10,9 +10,8 @@ export class CurrentWeatherComponent implements OnChanges {
 
   @Input() weather: Weather;
 
-  currentTemperature = 70;
-  precipitation = 80;
-  feelslike_f = '32';
+  currentTemperature = null;
+  feelslike_f = '';
 
   constructor() { }
 
