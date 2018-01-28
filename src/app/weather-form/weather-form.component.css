@@ -3,6 +3,19 @@
   flex-flow: wrap;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+}
+
+.zipcode--input {
+  width: 95%;
+  align-self: center;
+}
+
+.zipcode--input__alertWidth {
+  flex-grow: 2;
+  font-size: 30%;
+  color: red;
+  margin-bottom: 12px;
 }
 
 .buttonContainer {
