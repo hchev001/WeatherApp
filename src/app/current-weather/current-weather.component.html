@@ -1,7 +1,7 @@
 <div class="TodaysWeather">
   <h2>Today's Weather:</h2>
-  <p>
-    {{ currentTemperature }}
-    {{ precipitation}}% Chance of Precipitation
+  <p *ngIf="currentTemperature && feelslike_f">
+    Current Temperature: {{ currentTemperature }}
+    Feels Like: {{ feelslike_f}}
   </p>
 </div>
