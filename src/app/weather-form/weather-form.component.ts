@@ -12,7 +12,7 @@ export class WeatherFormComponent implements OnInit {
   @Output() zipsubmit: EventEmitter<any>;
 
   // our form
-  private form = new FormGroup({
+  public form = new FormGroup({
     zipcode: new FormControl('', [Validators.minLength(5), Validators.required])
   });
 
